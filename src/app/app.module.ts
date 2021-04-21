@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from './material/material.module';
 import { FormsModule } from '@angular/forms';
 import { AppMainNavComponent } from './app-main-nav/app-main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -13,24 +12,35 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-
+import { HomeComponent } from './Pages/home-component/home-component.component';
+import { ProfilesComponent } from './Pages/profiles-component/profiles-component.component';
+import { RouterModule } from '@angular/router';
+import { UserProfileComponent } from './Pages/user-profile/user-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
-    AppMainNavComponent
+    AppMainNavComponent,
+    HomeComponent,
+    ProfilesComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    MaterialModule,
     FormsModule,
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    RouterModule.forRoot([
+      {path: '', component: HomeComponent},
+      {path: 'profiles', component: ProfilesComponent},
+      {path: 'profile/:username', component: UserProfileComponent},
+      {path: '**', component: HomeComponent}
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
