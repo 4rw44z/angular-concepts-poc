@@ -7,7 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   public buyLaptop;
-  public promiseVal= '';
+  public promiseVal;
+  public like;
+  public appleComputer = {
+    name: 'Mac',
+    model: 'macintosh',
+    osType: 'macos',
+    processor: 'i7',
+    peripherals: 'mouse, keyboard, powerbrick'
+  }
+  public dellComputer = {
+    name: 'Dell',
+    model: 'XPS 15',
+    osType: 'linux',
+    processor: 'i7',
+    peripherals: 'mouse, keyboard, powerbrick'
+  }
   constructor() { }
   appleAvailable() {
     return true;
@@ -19,12 +34,12 @@ export class HomeComponent implements OnInit {
     this.buyLaptop = new Promise((resolve, reject) => {
       if(this.appleAvailable()) {
         return setTimeout(  () => {
-          resolve('apple is purchased');
+          resolve(this.appleComputer);
         }, 3000)
         
       } else if(this.dellAvailable()) {
         return setTimeout(  () => {
-          resolve('dell is purchased');
+          resolve(this.dellComputer);
         }, 3000)
       }
       else {
@@ -41,5 +56,9 @@ export class HomeComponent implements OnInit {
       console.log(res);
       this.promiseVal = res;
     })
+  }
+  public handleLikeClicked(data) {
+    console.log(data);
+    this.like = data;
   }
 }

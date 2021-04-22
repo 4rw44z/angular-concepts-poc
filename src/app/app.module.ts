@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { ListComponent } from './Pages/profiles-component/Observables/list/list.component';
 import { ForComponent } from './Pages/profiles-component/Observables/for/for.component';
 import { MaterialModule } from './material/material.module';
+import { NewComputerComponent } from './Pages/new-computer/new-computer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +22,7 @@ import { MaterialModule } from './material/material.module';
     ProfilesComponent,
     ListComponent,
     ForComponent,
+    NewComputerComponent,
   ],
   imports: [
     BrowserModule,
