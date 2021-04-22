@@ -16,6 +16,9 @@ import { HomeComponent } from './Pages/home-component/home-component.component';
 import { ProfilesComponent } from './Pages/profiles-component/profiles-component.component';
 import { RouterModule } from '@angular/router';
 import { UserProfileComponent } from './Pages/user-profile/user-profile.component';
+import { ListComponent } from './Pages/profiles-component/Observables/list/list.component';
+import { ForComponent } from './Pages/profiles-component/Observables/for/for.component';
+import {MatCardModule} from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +26,8 @@ import { UserProfileComponent } from './Pages/user-profile/user-profile.componen
     HomeComponent,
     ProfilesComponent,
     UserProfileComponent,
+    ListComponent,
+    ForComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,9 +40,13 @@ import { UserProfileComponent } from './Pages/user-profile/user-profile.componen
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    MatCardModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
-      {path: 'profiles', component: ProfilesComponent},
+      {path: 'profiles', component: ProfilesComponent, children: [
+        {path: '', component: ListComponent},
+        {path: 'from', component: ForComponent}
+      ]},
       {path: 'profile/:username', component: UserProfileComponent},
       {path: '**', component: HomeComponent}
     ])
