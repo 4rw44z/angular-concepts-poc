@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ForComponent } from './for.component';
+import { ChildrenComponent } from './children.component';
 
-describe('ForComponent', () => {
-  let component: ForComponent;
-  let fixture: ComponentFixture<ForComponent>;
+describe('ChildrenComponent', () => {
+  let component: ChildrenComponent;
+  let fixture: ComponentFixture<ChildrenComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ForComponent ]
+      declarations: [ ChildrenComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ForComponent);
+    fixture = TestBed.createComponent(ChildrenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

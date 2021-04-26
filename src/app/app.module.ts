@@ -10,8 +10,6 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { HomeComponent } from './Pages/home-component/home-component.component';
 import { ProfilesComponent } from './Pages/profiles-component/profiles-component.component';
 import { RouterModule } from '@angular/router';
-import { ListComponent } from './Pages/profiles-component/Observables/list/list.component';
-import { ForComponent } from './Pages/profiles-component/Observables/for/for.component';
 import { MaterialModule } from './material/material.module';
 import { NewComputerComponent } from './Pages/new-computer/new-computer.component';
 @NgModule({
@@ -20,8 +18,6 @@ import { NewComputerComponent } from './Pages/new-computer/new-computer.componen
     AppMainNavComponent,
     HomeComponent,
     ProfilesComponent,
-    ListComponent,
-    ForComponent,
     NewComputerComponent,
   ],
   imports: [
@@ -34,9 +30,8 @@ import { NewComputerComponent } from './Pages/new-computer/new-computer.componen
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
       {path: 'profiles', component: ProfilesComponent, children: [
-        {path: '', component: ListComponent},
-        {path: 'from', component: ForComponent}
       ]},
+      { path: 'children', loadChildren: () => import('./children/children.module').then(m => m.ChildrenModule) },
       {path: '**', component: HomeComponent}
     ])
   ],
