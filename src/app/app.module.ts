@@ -12,6 +12,7 @@ import { ProfilesComponent } from './Pages/profiles-component/profiles-component
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material/material.module';
 import { NewComputerComponent } from './Pages/new-computer/new-computer.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,10 +28,10 @@ import { NewComputerComponent } from './Pages/new-computer/new-computer.componen
     FormsModule,
     LayoutModule,
     MaterialModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
-      {path: 'profiles', component: ProfilesComponent, children: [
-      ]},
+      {path: 'profiles', component: ProfilesComponent },
       { path: 'children', loadChildren: () => import('./children/children.module').then(m => m.ChildrenModule) },
       {path: '**', component: HomeComponent}
     ])

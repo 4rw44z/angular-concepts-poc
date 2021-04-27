@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-children',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./children.component.scss']
 })
 export class ChildrenComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private router: Router) { 
+  
   }
-
+  ngOnInit(): void {
+   
+  }
+  routeToSubChild() {
+    this.router.navigateByUrl('children/subchild');
+  }
 }
