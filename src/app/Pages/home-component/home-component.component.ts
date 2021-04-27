@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RxjsService } from 'src/app/services/rxjs';
 
 @Component({
   selector: 'app-home-component',
@@ -23,7 +24,7 @@ export class HomeComponent implements OnInit {
     processor: 'i7',
     peripherals: 'mouse, keyboard, powerbrick'
   }
-  constructor() { }
+  constructor( public readonly rxjsService : RxjsService) { }
   appleAvailable() {
     return true;
   }
@@ -49,16 +50,16 @@ export class HomeComponent implements OnInit {
       }
     });
     this.buyLaptop.then(res => {
-      console.log(res);
       this.promiseVal = res;
 
     }).catch(res => {
-      console.log(res);
       this.promiseVal = res;
     })
   }
   public handleLikeClicked(data) {
-    console.log(data);
     this.like = data;
+  }
+  public setRxJSDataOnClick() {
+    this.rxjsService.setStackAreaConfigId(true);
   }
 }

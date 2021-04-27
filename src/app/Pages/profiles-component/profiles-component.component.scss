@@ -1,0 +1,21 @@
+.profile-data-card {
+    max-width: 400px;
+    margin: 20px
+}
+.profiles-container {
+   display: flex;
+   flex-direction: column;
+}
+.profiles-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+}
+.action-buttons {
+    display: flex;
+    justify-content: center;
+}
+.bulk-click {
+    margin-right: 10px;
+}

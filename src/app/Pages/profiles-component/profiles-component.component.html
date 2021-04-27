@@ -1,7 +1,32 @@
 <div class="container">    
-    <div class="observables">
-        <h2>Observables</h2>
-        <router-outlet></router-outlet>
+    <div class="profiles-container">
+        <div class="profiles-cards">
+            <ng-container *ngFor="let item of (profileService.$profiles | async) trackBy: trackById; let i = index">
+                <mat-card class="profile-data-card">
+                    <mat-card-header>
+                      <mat-card-title>{{item.name}}</mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image [src]="item.image" alt="Photo of a Shiba Inu">
+                    <mat-card-content>
+                      <p>
+                        {{item.about}}
+                      </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                      <button mat-button (click)="deleteProfile(item)">Delete</button>
+                      
+                    </mat-card-actions>
+                  </mat-card>
+            </ng-container>
+        </div>
+        <div class="action-buttons">
+            <button mat-raised-button (click)="createProfilesClicked()" color="primary" class="bulk-click">Create Bulk Profiles</button>
+            <button mat-raised-button (click)="createSingleProfilesClicked()" color="primary">Create Single Profiles</button>
+        </div>
+        <div class="rxjs-data">
+          {{rxjsService.stackAreaConfigId | async}}
+        </div>
     </div>
+
 </div>
 

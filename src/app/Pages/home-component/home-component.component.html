@@ -1,13 +1,20 @@
 <div class="container">
     <div class="promises">
         <h2>Promises</h2>
-    <p>{{promiseVal?.name}}</p>
+
+    <p>Example to show how Promise works the emit data only once</p>
+    <p>Promise once resolved it will give the data to the child component app-new-computer</p>
+    <p> Once Like is clicked it will emit data using @Output Event Emitter</p>
     </div>
     <ng-container *ngIf="promiseVal?.name">
         <app-new-computer [computerData]="promiseVal" (like)="handleLikeClicked($event)"></app-new-computer>
     </ng-container>
     <div class="like" *ngIf="like">
         <p>{{like}}</p>
+    </div>
+    <div class="rxjs-button-container">
+        <button mat-raised-button (click)="setRxJSDataOnClick()" color="primary">Get RxJs Data</button>
+        <p>Click the above button to set data true in rxjs service</p>
     </div>
 </div>
 
