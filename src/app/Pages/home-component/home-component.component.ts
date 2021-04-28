@@ -56,11 +56,6 @@ export class HomeComponent implements OnInit {
     }).catch(res => {
       this.promiseVal = res;
     });
-
-    this.rxjsService.getAllUsers().subscribe((data : any) => {
-      this.users = data;
-      console.log(this.users);
-    });
   }
   public handleLikeClicked(data) {
     this.like = data;

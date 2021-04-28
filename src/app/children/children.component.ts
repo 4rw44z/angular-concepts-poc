@@ -14,6 +14,6 @@ export class ChildrenComponent implements OnInit {
    
   }
   routeToSubChild() {
-    this.router.navigateByUrl('children/subchild');
+    this.router.navigateByUrl( this.router.url + '/subchild');
   }
 }

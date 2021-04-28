@@ -8,8 +8,8 @@ import { ApiEndPoints } from '../constants/api.enum';
 export class CrudService {
   public apiUrl;
   constructor(private readonly _http: HttpClient, ) { }
-  
-  public getAllUsers() {
-    return this._http.get(environment.apiUrl + `${ApiEndPoints.TODOS}`);
+
+  public getAllUsers(param) {
+    return this._http.get(environment.apiUrl + param);
   }
 }

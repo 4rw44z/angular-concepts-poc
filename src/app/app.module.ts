@@ -33,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
       {path: '', component: HomeComponent},
       {path: 'profiles', component: ProfilesComponent },
       { path: 'children', loadChildren: () => import('./children/children.module').then(m => m.ChildrenModule) },
+      { path: 'table', loadChildren: () => import('./table/table.module').then(m => m.TableModule) },
       {path: '**', component: HomeComponent}
     ])
   ],
