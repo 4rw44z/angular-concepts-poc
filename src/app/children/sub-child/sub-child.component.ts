@@ -2,7 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { RxjsService } from 'src/app/services/rxjs';
+import { CrudService } from 'src/app/services/crud.service';
 @Component({
   selector: 'app-sub-child',
   templateUrl: './sub-child.component.html',
@@ -13,7 +13,7 @@ export class SubChildComponent implements OnInit {
   public displayedColumns = ['id', 'title', 'completed']
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  constructor(public readonly rxjsService: RxjsService) {
+  constructor(public readonly rxjsService: CrudService) {
 
   }
   ngOnInit(): void {

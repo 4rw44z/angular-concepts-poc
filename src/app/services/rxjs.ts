@@ -12,7 +12,5 @@ export class RxjsService {
     getStackAreaConfigId(): Observable<any> {
         return this.stackAreaConfigId.asObservable();
     } 
-    public getAllUsers() {
-        return this._http.get('https://jsonplaceholder.typicode.com/todos');
-    }
+   
 }
