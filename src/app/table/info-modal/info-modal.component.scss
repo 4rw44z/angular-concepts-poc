@@ -1,0 +1,23 @@
+.dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.inline-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.action-buttons {
+    margin-top: 100px;
+    display: flex;
+    justify-content: flex-end;
+    .save-button {
+        margin-left: 10px;
+    }
+}
+.container {
+    &.form-body {
+        padding-bottom: 0;
+    }
+}

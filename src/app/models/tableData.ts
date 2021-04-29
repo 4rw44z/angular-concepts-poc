@@ -1,6 +1,6 @@
 export interface ITableData {
-    userId: string,
-    id: string;
+    userId?: string,
+    id?: string;
     title: string;
-    completed: string;
+    completed: boolean;
   }

@@ -3,6 +3,7 @@
         <mat-label>Search</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
     </mat-form-field>
+    <button mat-raised-button color="primary" (click)="addNewTask()" class="add-button">Add</button>
     <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort>
       
