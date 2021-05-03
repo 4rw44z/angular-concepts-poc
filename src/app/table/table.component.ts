@@ -66,6 +66,7 @@ export class TableComponent implements OnInit {
     if(isDelete) {
       this.crudService.delete(ServerModule.USERS, SubRoute.TODOS, data.id).subscribe(() => {
       this.getDataSource();
+      this.showSnackBar("Deleted Successfully");
     });
     }
     
@@ -86,7 +87,7 @@ export class TableComponent implements OnInit {
       if(this.newTodo && this.newTodo.id) {
         this.crudService.put(ServerModule.USERS, SubRoute.TODOS, this.newTodo, this.newTodo.id).subscribe(() => {
           this.getDataSource();
-          this.showSnackBar('Updated successfully');
+          this.showSnackBar('Updated Successfully');
         });
         this.newTodo = this.Todo;
       }
