@@ -1,4 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { FormControl, NgForm, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ITableData } from 'src/app/models/tableData';
 
@@ -8,15 +9,23 @@ import { ITableData } from 'src/app/models/tableData';
   styleUrls: ['./info-modal.component.scss']
 })
 export class InfoModalComponent implements OnInit {
+  public title = new FormControl('', [Validators.required]);
+  @ViewChild('todoForm', { static: true }) todoForm: NgForm;
   constructor(public dialogRef: MatDialogRef<InfoModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ITableData) { }
 
   ngOnInit(): void {
+    if(this.data.title) {
+      this.title.setValue(this.data.title);
+    }
   }
   public closeDialog() {
     this.dialogRef.close();
   }
   public onSave() {
+    if(this.title.errors.required) {
+      return;
+    }
     this.dialogRef.close(this.data);
   }
   handleTaskCompletedChange() {

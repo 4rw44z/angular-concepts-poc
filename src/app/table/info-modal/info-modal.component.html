@@ -1,15 +1,14 @@
-<!-- <p>info-modal works!</p>
-<p>{{data | json}}</p> -->
-<div class="dialog-header">
-    <h2 *ngIf="!data.id">Add New Tasks</h2>
-    <h2 *ngIf="data.id">Update Tasks</h2>
+ <div class="dialog-header">
+    <h2 *ngIf="!data?.id">Add New Tasks</h2>
+    <h2 *ngIf="data?.id">Update Tasks</h2>
     <button mat-icon-button (click)="closeDialog()" tabindex="-1"><mat-icon>close</mat-icon></button>
 </div>
 <div class="container form-body">
-   <form class="inline-form">
+   <form class="inline-form" #todoForm="ngForm" name="todoForm">
     <mat-form-field>
         <mat-label for="title">Task</mat-label>
-        <input matInput id="title" placeholder="Enter Task" [(ngModel)]="data.title" name="title" required>
+        <input matInput id="title" placeholder="Enter Task" name="title"  [formControl]="title">
+        <mat-error *ngIf="title?.errors?.required">Task name is required</mat-error>
       </mat-form-field>
       <mat-slide-toggle [checked]="data.completed" color="primary" labelPosition="before" (change)="handleTaskCompletedChange()">Completed</mat-slide-toggle>
       <div class="action-buttons">

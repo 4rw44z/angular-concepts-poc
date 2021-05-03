@@ -18,7 +18,7 @@ export class TableComponent implements OnInit {
 
   public Todo: ITableData = {
     title: '',
-    userId: '',
+    userId: '10',
     completed: false
   }
   public newTodo;
@@ -74,7 +74,7 @@ export class TableComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.newTodo = result;
-      if(this.newTodo?.id && this.newTodo) {
+      if(this.newTodo && this.newTodo.id) {
         this.crudService.put(ServerModule.USERS, SubRoute.TODOS, this.newTodo, this.newTodo.id).subscribe(() => {
           this.getDataSource();
         });
@@ -84,6 +84,9 @@ export class TableComponent implements OnInit {
         this.crudService.post(ServerModule.USERS, SubRoute.TODOS, this.newTodo).subscribe(() => {
           this.getDataSource();
         });
+      }
+      else {
+        this.newTodo = this.Todo;
       }
     });
   }
