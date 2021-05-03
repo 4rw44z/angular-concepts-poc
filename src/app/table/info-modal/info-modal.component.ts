@@ -23,10 +23,16 @@ export class InfoModalComponent implements OnInit {
     this.dialogRef.close();
   }
   public onSave() {
-    if(this.title.errors.required) {
+    if(this.title?.errors?.required) {
       return;
     }
-    this.dialogRef.close(this.data);
+    else if(this.title && this.data.id) {
+      this.dialogRef.close({ id: this.data.id, title: this.title.value, completed: this.data.completed});
+    }
+    else {
+      this.dialogRef.close({ title: this.title.value, completed: this.data.completed});
+    }
+    
   }
   handleTaskCompletedChange() {
     this.data.completed = !this.data.completed;

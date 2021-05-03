@@ -8,6 +8,7 @@ import { CrudService } from '../services/crud.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { InfoModalComponent } from './info-modal/info-modal.component';
 import { ITableData } from '../models/tableData';
+import {MatSnackBar} from '@angular/material/snack-bar';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -25,7 +26,7 @@ export class TableComponent implements OnInit {
   public displayedColumns = ['id', 'title', 'completed', 'update', 'delete']
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  constructor( public readonly crudService: CrudService, public dialog: MatDialog) {
+  constructor( public readonly crudService: CrudService, public dialog: MatDialog, private _snackBar: MatSnackBar) {
 
    }
 
@@ -60,12 +61,20 @@ export class TableComponent implements OnInit {
   }
 
   public deleteTask(data) {
-    this.crudService.delete(ServerModule.USERS, SubRoute.TODOS, data.id).subscribe(() => {
+    let isDelete = false;
+    isDelete = this.openAlertBox();
+    if(isDelete) {
+      this.crudService.delete(ServerModule.USERS, SubRoute.TODOS, data.id).subscribe(() => {
       this.getDataSource();
     });
+    }
+    
   
   }
-  openDialog(todo?): void {
+  public openAlertBox() {
+    return confirm('Are you sure');
+  }
+  public openDialog(todo?): void {
     const dialogRef = this.dialog.open(InfoModalComponent, {
       width: '600px',
       data: todo? todo : this.newTodo 
@@ -77,18 +86,23 @@ export class TableComponent implements OnInit {
       if(this.newTodo && this.newTodo.id) {
         this.crudService.put(ServerModule.USERS, SubRoute.TODOS, this.newTodo, this.newTodo.id).subscribe(() => {
           this.getDataSource();
+          this.showSnackBar('Updated successfully');
         });
         this.newTodo = this.Todo;
       }
       else if(this.newTodo) {
         this.crudService.post(ServerModule.USERS, SubRoute.TODOS, this.newTodo).subscribe(() => {
           this.getDataSource();
+          this.showSnackBar('Saved Successfully');
         });
       }
       else {
         this.newTodo = this.Todo;
       }
     });
+  }
+  public showSnackBar(message) {
+    this._snackBar.open(message, '', {duration: 3000});
   }
 }
 

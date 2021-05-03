@@ -1,15 +1,8 @@
 {
   "todos": [
     {
-      "userId": 1,
       "id": 1,
-      "title": "Some new Task to be done",
-      "completed": true
-    },
-    {
-      "userId": 1,
-      "id": 3,
-      "title": "fest test",
+      "title": "Some new Task",
       "completed": true
     },
     {
@@ -1195,22 +1188,14 @@
       "completed": false
     },
     {
-      "title": "Test task",
-      "userId": "10",
-      "completed": false,
-      "id": 201
+      "id": 201,
+      "title": "New Task Yes",
+      "completed": true
     },
     {
-      "title": "",
-      "userId": "10",
-      "completed": false,
+      "title": "GTO 19",
+      "completed": true,
       "id": 202
-    },
-    {
-      "title": "",
-      "userId": "10",
-      "completed": false,
-      "id": 203
     }
   ]
 }
