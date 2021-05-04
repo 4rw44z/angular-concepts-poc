@@ -6,7 +6,6 @@ import { ServerModule } from '../constants/serverModule.enum';
   providedIn: 'root'
 })
 export class CrudService {
-  public apiUrl;
   constructor(private readonly _http: HttpClient, ) { }
 
   public get(module, subroutes) {
