@@ -12,8 +12,10 @@ import { ProfilesComponent } from './Pages/profiles-component/profiles-component
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material/material.module';
 import { NewComputerComponent } from './Pages/new-computer/new-computer.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { ErrorInterceptor, fakeBackendProvider, JwtInterceptor } from 'src/helper';
+import { AuthGuard } from './guards';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,7 @@ import { LoginComponent } from './login/login.component';
     MaterialModule,
     HttpClientModule,
     RouterModule.forRoot([
-      {path: '', component: HomeComponent},
+      {path: '', component: HomeComponent, canActivate: [AuthGuard]},
       {path: 'login', component: LoginComponent},
       {path: 'profiles', component: ProfilesComponent },
       { path: 'children', loadChildren: () => import('./children/children.module').then(m => m.ChildrenModule) },
@@ -41,7 +43,13 @@ import { LoginComponent } from './login/login.component';
       {path: '**', component: HomeComponent}
     ])
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    fakeBackendProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

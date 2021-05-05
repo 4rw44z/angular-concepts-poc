@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth-service.service';
 import { RxjsService } from 'src/app/services/rxjs';
 
 @Component({
@@ -25,7 +27,8 @@ export class HomeComponent implements OnInit {
     processor: 'i7',
     peripherals: 'mouse, keyboard, powerbrick'
   }
-  constructor( public readonly rxjsService : RxjsService) { }
+  constructor( public readonly rxjsService : RxjsService, private router: Router,
+    private authenticationService: AuthService) { }
   appleAvailable() {
     return true;
   }
@@ -62,5 +65,9 @@ export class HomeComponent implements OnInit {
   }
   public setRxJSDataOnClick() {
     this.rxjsService.setStackAreaConfigId(true);
+  }
+  public logout() {
+      this.authenticationService.logout();
+      this.router.navigate(['/login']);
   }
 }
