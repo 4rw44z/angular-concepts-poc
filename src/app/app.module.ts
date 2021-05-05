@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppMainNavComponent } from './app-main-nav/app-main-nav.component';
+import { AppMainNavComponent } from './components/app-main-nav/app-main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { HomeComponent } from './Pages/home-component/home-component.component';
 import { ProfilesComponent } from './Pages/profiles-component/profiles-component.component';
@@ -37,9 +37,9 @@ import { AuthGuard } from './guards';
     RouterModule.forRoot([
       {path: '', component: HomeComponent, canActivate: [AuthGuard]},
       {path: 'login', component: LoginComponent},
-      {path: 'profiles', component: ProfilesComponent },
-      { path: 'children', loadChildren: () => import('./children/children.module').then(m => m.ChildrenModule) },
-      { path: 'table', loadChildren: () => import('./table/table.module').then(m => m.TableModule) },
+      {path: 'profiles', component: ProfilesComponent, canActivate: [AuthGuard]},
+      { path: 'children', loadChildren: () => import('./components/children/children.module').then(m => m.ChildrenModule) },
+      { path: 'table', loadChildren: () => import('./components/table/table.module').then(m => m.TableModule) },
       {path: '**', component: HomeComponent}
     ])
   ],

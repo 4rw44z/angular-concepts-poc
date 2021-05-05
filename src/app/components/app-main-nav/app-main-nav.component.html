@@ -7,6 +7,7 @@
       <a mat-list-item routerLink="./profiles">Profiles</a>
       <a mat-list-item routerLink="./children">Children</a>
       <a mat-list-item routerLink="./table">Table</a>
+      <a mat-list-item (click)="logout()">Log Out</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -25,6 +26,7 @@
         <li><a routerLink="./profiles">Profiles</a></li>
         <li><a routerLink="./children">Children</a></li>
         <li><a routerLink="./table">Table</a></li>
+        <li><a mat-list-item (click)="logout()">Log Out</a></li>
       </ul>
     </mat-toolbar>
     <ng-content></ng-content>

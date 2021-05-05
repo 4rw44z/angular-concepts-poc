@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { ChildrenComponent } from './children.component';
 import { SubChildComponent } from './sub-child/sub-child.component';
-import { MaterialModule } from '../material/material.module';
+import { MaterialModule } from 'src/app/material/material.module';
 
 
 const routes: Routes = [

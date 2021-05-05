@@ -2,13 +2,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { SubRoute } from '../constants/subroutes.enum';
-import { ServerModule } from '../constants/serverModule.enum';
-import { CrudService } from '../services/crud.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { InfoModalComponent } from './info-modal/info-modal.component';
-import { ITableData } from '../models/tableData';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { ITableData } from 'src/app/models/tableData';
+import { CrudService } from 'src/app/services/crud.service';
+import { SubRoute } from 'src/app/constants/subroutes.enum';
+import { ServerModule } from 'src/app/constants/serverModule.enum';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
