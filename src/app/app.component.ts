@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from './models/user';
 import { AuthService } from './services/auth-service.service';
 
 @Component({
@@ -7,16 +8,10 @@ import { AuthService } from './services/auth-service.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public isUserLoggedIn = false;
+  public currentUser: User;
   constructor(private authenticationService: AuthService,) {
-    this.UserLoggedIn()
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
   title = 'sidepanel-poc';
-  public UserLoggedIn() {
-    if(this.authenticationService.currentUserValue) {
-      this.isUserLoggedIn = true;
-    } else {
-      this.isUserLoggedIn = false; 
-    }
-  }
+
 }
